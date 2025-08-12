@@ -1,18 +1,18 @@
-name: Docker Image CI
+name: SortTV for GHCR
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    branches:
+      - "main"
 
 jobs:
-
-  build:
-
+  build_and_pubish:
     runs-on: ubuntu-latest
-
+    environment: release
     steps:
-    - uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+      - uses: actions/checkout@v4
+      - name: Build and push the image
+        run: |
+          docker login --username eUwSqBTm --password ${{ secrets.DOCKERHUB_TOKEN }} ghcr.io
+          docker build . --tag ghcr.io/euwsqbtm/sorttv:latest
+          docker push ghcr.io/euwsqbtm/sorttv:latest
