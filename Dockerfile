@@ -1,5 +1,5 @@
 # Add a new comment to trigger build.
-FROM perl:5.24.2
+FROM perl:latest
 LABEL "maintainer=github.com/eUwSqBTm"
 WORKDIR /
 RUN apt-get update \
