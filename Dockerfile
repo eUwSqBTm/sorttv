@@ -1,6 +1,5 @@
 # Add a new comment to trigger build.
 FROM perl:latest
-LABEL "maintainer=github.com/eUwSqBTm"
 WORKDIR /
 RUN apt-get update \
   && apt-get install -y unzip \
